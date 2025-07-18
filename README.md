@@ -1,22 +1,22 @@
 # clocpot (count lines of code, plot over time)
 
-## install dependencies
+## Install dependencies
 ```
 brew install uv
 uv pip install
 ```
 
-## plot all lines of code in the main branch
+## Plot all lines of code in the main branch
 ```sh
 uv run main.py /path/to/repo -b main
 ```
 
-## plot all lines of code and lines in top 10 languages with the most lines in the main branch
+## Plot all lines of code and lines by language in the main branch
 ```sh
 uv run main.py /path/to/repo -b main --all
 ```
 
-## example output on one of my repos
+## Example output
 ![image](./example_output.png)
 
 
