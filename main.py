@@ -18,6 +18,9 @@ ENV_DEPS = ['git', 'cloc']
 
 SECONDS_IN_DAY = 3600 * 24
 MAX_COMMITS_EXAMINED = 30
+LINE_STYLE = "-"
+LINE_WIDTH = 2
+POINT_STYLE = "."
 
 # short alias for run shell command
 sh = subprocess.getstatusoutput
@@ -181,7 +184,7 @@ def main():
     if plot_all:
         top_langs = [(clocs[-1].langs[lang].code, lang) for lang in clocs[-1].langs]
         top_langs.sort(reverse=True)
-        top_langs = top_langs#[:5]
+        top_langs = top_langs[:10]
 
         langs = set([lang for _, lang in top_langs])
 
@@ -199,22 +202,18 @@ def main():
 
         # Plot each language
         for lang in data:
-            plt.plot(times, data[lang], label=f'{lang}', linestyle='-', linewidth=2)
-        plt.plot(times, total, label=f'Total', linestyle='-', linewidth=2)
+            plt.plot(times, data[lang], POINT_STYLE, label=f'{lang}', linestyle=LINE_STYLE, linewidth=LINE_WIDTH)
+        plt.plot(times, total, POINT_STYLE, label=f'Total', linestyle=LINE_STYLE, linewidth=LINE_WIDTH)
     else:
         total = []
         times = []
         for cloc in clocs:
             total.append(cloc.total.code)
             times.append(cloc.timestamp)
-        plt.plot(times, total, label=f'Total', linestyle='-', linewidth=2)
+        plt.plot(times, total, POINT_STYLE, label=f'Total', linestyle=LINE_STYLE, linewidth=LINE_WIDTH)
 
     # Customize the plot
-    plt.title(f'Lines of code in branch {branch}')
-    #plt.xlabel(f'Day')
-    #ax.xaxis.set_major_locator(mdates.MonthLocator(bymonth=np.arange(1, 13, 2)))
-    #ax.xaxis.set_major_formatter(mdates.DateFormatter('%b'))
-    #ax.xaxis.set_major_formatter(mdates.ConciseDateFormatter())
+    plt.title(f'Lines of code in {branch}')
     ax.set_yscale('linear')
     for label in ax.get_xticklabels():
         label.set_rotation(40)
