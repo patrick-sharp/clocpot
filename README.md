@@ -2,6 +2,8 @@
 
 ## Install dependencies
 ```
+brew install git
+brew install cloc
 brew install uv
 uv pip install
 ```
