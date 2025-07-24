@@ -5,7 +5,7 @@
 brew install git
 brew install cloc
 brew install uv
-uv pip install
+uv pip install -r pyproject.toml
 ```
 
 ## Plot all lines of code in the main branch
@@ -26,4 +26,5 @@ uv run main.py /path/to/repo -b main --all
 <!-- ```sh -->
 <!-- uv init -->
 <!-- uv add matplotlib -->
+<!-- uv pip install -->
 <!-- ``` -->
