@@ -24,7 +24,6 @@ uv run main.py /path/to/repo -b main --all
 
 <!-- ## init (don't run these, I just have them here so I don't forget) -->
 <!-- ```sh -->
-<!-- set -euo pipefail -->
 <!-- uv init -->
 <!-- uv add matplotlib -->
 <!-- ``` -->
